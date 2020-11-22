@@ -1,0 +1,29 @@
+version: '3'
+services:
+
+  customers:
+    container_name: customers
+    build: ./customers
+    volumes:
+      - ./customers:/opt/app
+    networks:
+      - mynet
+    ports:
+      - "8081:8081"
+      - "3301:3301"
+    command: cartridge start server1
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    networks:
+      - mynet
+    volumes:
+      - ./nginx:/etc/nginx
+    ports:
+      - "7000:7000"
+      - "7001:7001"
+
+networks:
+  mynet:
+    driver: bridge

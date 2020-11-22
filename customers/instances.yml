@@ -1,0 +1,8 @@
+---
+app.server1:
+  advertise_uri: customers:3301
+  http_port: 8081
+
+app.server2:
+  advertise_uri: customers1:3302
+  http_port: 8082
